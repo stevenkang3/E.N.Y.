@@ -1,0 +1,96 @@
+<script type="text/javascript">
+  $(function() {
+    $('a.button').on('click', function(){
+      $('#countymap').addClass('animated rotateInDownLeft');
+      $('#countymap').removeClass('hidden');
+    })
+    $('a.close').on('click', function(){
+      $('#countymap').removeClass('animated rotateInDownLeft');
+        $('#countymap').addClass('animated hinge');
+    })
+  });
+</script>
+<br><br>
+<!-- <div class='container'> -->
+<div class='row'>
+  <div class='col-sm-6 col-md-6 col-lg-6' id='event'>
+    <a class='animated shake' href="/users">Back</a>
+    <h3> Create your own Event </h3>
+    <form  action="/events" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type='hidden' name='user_id' value='<%= current_user.id%>'>
+
+      <label for="name">Event Name</label>
+      <input id='name' class='form-control input-sm' type="text" name="event[name]" placeholder="20 char max"><br>
+
+      <label for="date">Address</label>
+      <input id='address' class='form-control input-sm' type="address" name="event[address]" placeholder="123 Hill St Los Angeles, CA 90001"><br>
+
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="date">Event Date</label>
+          <input id='date' class='form-control input-sm' type="date" name="event[date]" value=""><br>
+        </div>
+        <div class="col-xs-6">
+          <label for="price">Event Price?</label>
+          <input id='price' class='form-control input-sm' type="text" name="event[price]" placeholder="10.00 or Free"><br>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="start">Start Time</label>
+          <input id='start' class='form-control input-sm' type="time" name="event[start]" value=""><br>
+        </div>
+        <div class="col-xs-6">
+          <label for="end">End Start Time</label>
+          <input id='end' class='form-control input-sm' type="time" name="event[end]" value=""><br>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="capacity">Capacity</label>
+          <input id='capacity' class='form-control input-sm' type="number" name="event[capacity]" value=""><br>
+        </div>
+        <div class="col-xs-6">
+          <label for="category">Category</label>
+          <select id='category' class='form-control input-sm' name="event[category]" value=""><br>
+          <% @categories.each do |category| %>
+          <option><%=category%></option>
+          <<%end%>
+        </select>
+        </div>
+      </div>
+      <input type="hidden" name="event[state]" value="CA">
+
+      <label for="description">Event Description</label>
+      <textarea  id='description' class='form-control input-sm' type="text" name="event[description]"></textarea><br>
+
+      <div class='row'>
+        <div class="col-xs-6">
+      <label for="county">Event County</label>
+      <select id='county' name="event[county]">
+        <% @counties.each do |county| %>
+        <option><%=county%></option>
+        <<%end%>
+      </select>
+    </div>
+    <div class="col-xs-6">
+      <label for='image'>Event Image</label>
+      <input id='image' type="file" name="event[image]">
+    </div>
+      <a href="#" class="button">Show County Map</a><br>
+      <button type="submit" class='btn-warning pull-right'>Create Event</button>
+    </form>
+  </div>
+  </div>
+
+
+
+  <div class="col-sm-6 col-md-6 col-lg-6" >
+    <div id='countymap' class="hidden">
+      <a href="#" class="close">Close Map</a><br><br>
+    </div>
+    <!-- <img src="http://www.los-angeles-paving.com/wp-content/uploads/2011/02/los-angeles-county.jpg" alt="" /> -->
+  </div>
+</div>
+  <!-- </div> -->

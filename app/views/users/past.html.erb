@@ -1,0 +1,240 @@
+<style media="screen">
+.page-header{
+  width: 100%;
+  margin-top: -10px;
+  text-align: center;
+  border: 1px solid black;
+  /*background-image: url(http://i1080.photobucket.com/albums/j322/richgalaz/walls/wallpaper-845084.jpg);*/
+  background-image: url(http://cdn.lolwot.com/wp-content/uploads/2015/03/top-20-american-cities-for-singles-looking-for-love-16.jpg);
+  /*background-color: #003399;*/
+  background-attachment: fixed;
+  color: white;
+  height: 163px;
+  border-radius: 5px;
+  text-shadow: 1px 1px black;
+}
+#userProfile_image {
+  width: 225px;
+  height: 225px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+#userEvent_image {
+  width: 300px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5px;
+  color:black;
+  text-shadow: 1px solid white;
+  font-family: fantasy;
+  font-size: 20px;
+}
+.joinedEvents {
+  width: 200px;
+  height: 150px;
+  padding: 10px;
+}
+.joinedTitle{
+  text-shadow: 1px solid black;
+  font-family: Ariel black;
+  font-weight: bold;
+  font-size: 15px;
+}
+#leftPanel {
+  border: 1px solid black;
+  text-align: center;
+  padding:9px;
+}
+#attendees {
+  border: 1px solid black;
+  margin-left: 5px;
+  margin-right: -5px;
+}
+
+/*===discussion===*/
+#rightPanel {
+  padding-top: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px dotted black;
+  border-right: 1px solid black;
+}
+#eventsJoined_title {
+  text-align: center;
+  text-decoration: underline;
+  font-family: fantasy;
+  font-weight: bold;
+  color: #990033;
+}
+.profileEventTitle {
+  font-weight: bold;
+  font-family: Ariel black;
+  text-shadow: 1px 1px white;
+  text-align: center;
+  color:red;
+}
+.connections {
+  display:inline-block;
+}
+.connectionimg {
+  width:50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+</style>
+<!-- =========== Top NavBar ============== -->
+<nav class='navbar navbar-default'>
+  <div class='container fluid'>
+    <div class='navbar-header'>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> E.N.Y.</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class='active'>  <a href="/users">Main Page</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ============= Header ============= -->
+<div class="page-header">
+  <br>
+  <h1 id='user_title' class='animated zoomIn'><%= @user.first_name %> <%= @user.last_name %></h1>
+  <!-- <h3 id='user_member' class='animated zoomIn'>Member Since: <%= @user.created_at.strftime("%b %d, %Y") %></h3> -->
+  <br>
+</div>
+
+
+<div class='container'>
+  <div class='row'>
+    <!-- ====== Host - Right Panel======== -->
+    <div class='col-sm-3' id='leftPanel'>
+      <div id='event_image'></div>
+      <h3></h3>
+      <h4> Organizer</h4>
+      <hr>
+      <div style="background-image:url(<%=@user.image.url%>);" id='userProfile_image'></div>
+      <h4>Interests:</h4>
+      <button style="color:#3399FF;opacity: 0.50;" class="glyphicon glyphicon-glass"> Interest</button><br><br>
+      <div id='user_image'></div>
+      <h5></h5>
+      <p>Reach Out: </p></p>
+      <button style="color:#3399FF;opacity: 0.50;" class="btn-lg glyphicon glyphicon-envelope"> Contact</button>
+    </div>
+
+
+
+
+
+    <!-- ======= Joiners ======== -->
+    <div class='col-sm-6' id='attendees'>
+      <div class='row'>
+        <ul class="nav nav-tabs">
+        <li role="presentation" ><a href="/user/<%=@user.id%>">Organizer Info</a></li>
+        <li role="presentation" class="active"><a href="/past/:id">Past Events</a></li>
+        <li role="presentation"><a href="#">Reviews</a></li>
+        </ul>
+      </div>
+      <p>
+        </p>
+        <!-- <div class='row'>
+          <div id='event_time'>
+            <a href="" class="glyphicon glyphicon-bullhorn"> Tell_a_friend</a>  ||
+            <a href="" id="twitterShare" class="glyphicon glyphicon-share-alt"> Share</a>
+          </div>
+        </div> -->
+
+        <div class="row">
+          <div class='col-sm-2'>
+            <p></p>
+            <button class='btn-lg btn-success glyphicon glyphicon-pencil'></button>
+          </div>
+          <div class='col-sm-10'>
+            <h3 style="color:#993366" > Past Events Created by <%=@user.first_name%></h3><br>
+            <% @past.each do |e| %>
+            <a href="/event/<%=e.id%>"><div style="background-image:url(<%=e.image.url%>);" id='userEvent_image'>
+              <h2 class='profileEventTitle'><%= e.name %></h2>
+              <p class='profileEventTitle'><%= e.date.strftime("%A - %b %d, %Y") %></p>
+              <div style="color:red;" class='glyphicon glyphicon-check'></div></div></a><hr>
+              <% if e.users_joined.include? current_user %>
+                Rate this Event:
+                <button type="submit" class="btn-info glyphicon glyphicon-thumbs-up"></button>
+                <button type="submit" class="btn-danger glyphicon glyphicon-thumbs-down"></button>
+            <%end%>
+            <%end%>
+          </div>
+        </div>
+        <hr>
+
+        <div class='row'>
+          <div class='col-sm-2'>
+            <p></p>
+            <button class='btn-lg btn-warning glyphicon glyphicon-map-marker'></button>
+          </div>
+          <div class='col-sm-10'>
+            <h4>Location:</h4>
+            <h5><%= @user.location%>, <%= @user.state%></h5>
+
+          </div>
+        </div>
+        <hr>
+
+        <div class="row">
+          <div class='col-sm-2'>
+            <p></p>
+            <button class='btn-lg btn-danger glyphicon glyphicon-heart'></button>
+          </div>
+          <div class='col-sm-10'>
+            <h4>Member Since: </h4>
+            <h5><%= @user.created_at.strftime("%b %d, %Y")%></h5>
+
+          </div>
+        </div>
+        <hr>
+
+          <div class='row'>
+            <div class='col-sm-2'>
+              <button class='btn-lg btn-info glyphicon glyphicon-thumbs-up'></button>
+            </div>
+            <div class='col-sm-10'>
+              <h4>Connections:</h4>
+              <% @users.each do |user| %>
+              <% if user != @user %>
+                <div class="connections"><img class='connectionimg' src="<%=user.image.url%>" alt="" /></div>
+              <%end%>
+              <%end%>
+            </div>
+          </div>
+          <hr>
+
+  </div>
+
+<!-- ============ Right Panel ========== -->
+      <div class='col-sm-3' id='rightPanel'>
+
+          <h4 id='eventsJoined_title'>Events <%=@user.first_name%> Joined</h4>
+          <% @join.each do |joined| %>
+          <h5 class="joinedTitle"><%= joined.event.name %>
+            <a href="/event/<%=joined.event.id%>"><div style="background-image:url(<%=joined.event.image.url%>);" class='joinedEvents'></div></a><hr>
+          <!-- <div><img class='joinedEvents' src="<%= joined.event.image.url %>" alt="" /><%=joined.event.name%></div><br> -->
+          <%end%>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="box" data-spy="scroll" data-target=".navbar" data-offset="50">
+    <p id='comments' > Event Discussion  <p>
+
+    </div>

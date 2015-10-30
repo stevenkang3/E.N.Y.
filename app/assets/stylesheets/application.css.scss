@@ -1,0 +1,174 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "animate.css";
+ @import "animate";
+
+
+
+
+ body {
+   margin: 0 auto;
+   margin-left: 25px;
+   padding: 50px;
+
+ }
+
+ #error {
+   color:red;
+ }
+
+// =======MAIN PAGE ===========
+#events {
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background:url(http://static1.squarespace.com/static/53f381b3e4b0554a7ae9cdae/t/5431cf21e4b01abda557590e/1412550433631/bigstock-events-7444309.jpg?format=1500w)no-repeat center center;
+  background-size:100% auto;
+  height: 350px;
+  text-align: center;
+}
+#nearYou {
+  animation-delay: .5s;
+  text-align: center;
+  font-family: channel;
+  font-size: 50px;
+  margin-top: -50px;
+  color:lightblue;
+}
+#title {
+  font-family: fantasy;
+  color: lightblue;
+}
+
+// ============== LOGIN ===============
+#login {
+padding: 50px;
+width: 275px;
+height: 350px;
+border-radius: 20px;
+background-color: lightgray;
+border: 1px solid white;
+opacity: 0.85;
+}
+.login_background {
+  border-radius: 20px;
+  padding:20px;
+  margin: 0 auto;
+  min-width: 300px;
+  min-height: 100px;
+  height: 593px;
+  width: 810px;
+
+  background-image: url(http://summitmedia.us/internoise/wp-content/uploads/2014/06/test-events.jpg);
+}
+
+// ========== SHOW ============
+.box {
+
+  height: 553px;
+  overflow-y: scroll;
+  border: 1px solid black;
+  border-top: 20px solid #3399FF;
+  padding-left: 5px;
+  // padding-top: 15px;
+}
+.info {
+  padding-left: 30px;
+  width: 275px;
+  height: 375px;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid black;
+  opacity: 0.85;
+}
+#pin {
+  margin-left: 40px;
+}
+#attending {
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: underline;
+  color: lightgreen;
+  text-shadow: 1px 1px black;
+}
+#dashboard {
+  margin-left:50px;
+}
+#addcomment {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #9900CC;
+  text-shadow: 1px 1px white;
+}
+
+// ======= NEW EVENT =======
+#event {
+  padding: 40px;
+  width: 50%%;
+  height: 700px;
+  border-radius: 20px;
+  background-color: lightgray;
+  border: 1px solid white;
+  opacity: 0.85;
+}
+#countymap {
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background:url(http://www.los-angeles-paving.com/wp-content/uploads/2011/02/los-angeles-county.jpg)no-repeat center center;
+  background-size:100% auto;
+  min-height: 380px;
+  max-height: 750px;
+  overflow-y: scroll;
+  border: 1px solid black;
+  padding-left: 35px;
+  padding-top: 15px;
+}
+
+// ===== MAP=====
+
+#directionPage, #mapPage, .ui-content {
+     height: 700px;;
+   }
+
+   #right-panel {
+     height: 700px;;
+     float: right;
+     width: 390px;
+     overflow: auto;
+   }
+
+   #map {
+     margin-right: 400px;
+   }
+
+   @media print {
+     #map {
+       height: 500px;
+       margin: 0;
+     }
+
+    //  #right-panel {
+    //    float: none;
+    //    width: auto;
+    //  }
+   }

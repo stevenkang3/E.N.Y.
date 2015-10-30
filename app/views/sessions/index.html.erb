@@ -1,0 +1,23 @@
+<style media="screen">
+  body{
+    background-image: url(http://www.honestlyb.com/s/dots_desktop.jpg);
+  }
+</style>
+<br>
+<div class="animated rotateIn login_background">
+<div class="animated flip login">
+
+
+<br>
+<form  id='login' action="/sessions" method="post">
+  <a href="/users/new">Not a Member Yet?</a><br><br>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<label for="email">Email</label>
+<input id='email' type="text" name="email" placeholder="bobby@gmail.com"><br><br>
+<label for="password">Password</label>
+<input id='password' type="password" name="password" value=""><br><br>
+<input type="submit" value="Log In">
+</form>
+
+</div>
+</div>

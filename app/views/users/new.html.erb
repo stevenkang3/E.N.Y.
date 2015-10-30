@@ -1,0 +1,41 @@
+<h2 class='animated bounceInDown' id='title'> Register to start creating events</h2>
+<div class="row">
+<div class="col-md-2 col-offset-1">
+<form  action="/users" method="post" enctype="multipart/form-data">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<label for="first_name">First Name</label>
+<input id='first_name' type="text" name="user[first_name]" value=""><br>
+<label for="last_name">Last Name</label>
+<input id='last_name' type="text" name="user[last_name]" value=""><br>
+<label for="email">Email</label>
+<input id='email' type="text" name="user[email]" value=""><br>
+<label for="location">Location</label>
+<input id='location' type="text" name="user[location]" placeholder="City of Residence"><br><br>
+<label for="state">State</label>
+
+<select id='state' name="user[state]">
+<% @states.each do |state| %>
+<option><%=state%></option>
+<<%end%>
+</select><br>
+<label for='image'>Image</label>
+<input id='image' type="file" name="user[image]"><br>
+
+<label for="password">Password</label>
+<input id='password' type="password" name="user[password]" value=""><br>
+<label for="password_confirmation">Password Confirmation</label>
+<input id='password_confirmation' type="password" name="user[password_confirmation]" value=""><br><br>
+<input type="submit" value="Join">
+</form>
+</div>
+<div class="col-md-9">
+  <div class="animated bounceInDown col-md-12 col-xs-12" id='events'></div>
+  <h2 class="animated lightSpeedIn col-md-12 col-xs-12" id='nearYou'>Near You</h2>
+
+</div>
+</div><br>
+
+<div class="row">
+<a href="/sessions/new">Already a Member?</a>
+</div>
+<br>

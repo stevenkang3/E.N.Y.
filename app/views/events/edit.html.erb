@@ -1,0 +1,118 @@
+<!-- <link rel="stylesheet" href="animate.css"> -->
+<style media="screen">
+body {
+background-image: url(http://www.transparenttextures.com/patterns/clean-gray-paper.png);
+}
+.wall {
+  margin: 0 auto;
+  /*padding-left: 150px;
+  padding-top: 50px;*/
+  /*width: 800px;*/
+  height: 704px;
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background-size:100% auto;
+  background:url(https://www.colourbox.com/preview/4686861-empty-abandoned-interior-vintage-background-of-brick-stone-wall-and-wooden-floor.jpg)no-repeat center center;
+  background-size: cover;
+}
+#chalk {
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-image: url(http://38.media.tumblr.com/3beb5c36ea698fa45911b63740f6ffd4/tumblr_inline_n1n2t4Etrr1sq0gml.jpg);
+  background-size: cover;
+  max-width:700px;
+  max-height: 490px;
+}
+label {
+  color:white;
+  font-family:chalkduster;
+}
+</style>
+
+<div  class='wall' id='wall'>
+  <button class='btn-lg glyphicon glyphicon-arrow-left'><a href="/users"> Back</a></button>
+  <div class='animated swing' id='chalk'>
+    <form  action="/events/<%=@event.id%>" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="patch">
+      <input type='hidden' name='user_id' value='<%= @event.user_id%>'>
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="name">Event Name</label>
+          <input id='name' class='form-control input-sm' type="text" name="event[name]" placeholder="20 char max please" value="<%= @event.name%>">
+        </div>
+        <div class="col-xs-6">
+          <label for="date">Address</label>
+          <input id='address' class='form-control input-sm' type="address" name="event[address]" value="<%= @event.address%>">
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="date">Event Date</label>
+          <input id='date' class='form-control input-sm' type="date" name="event[date]" value="<%= @event.date%>">
+        </div>
+        <div class="col-xs-6">
+          <label for="price">Event Price?</label>
+          <input id='price' class='form-control input-sm' type="text" name="event[price]" value="<%= @event.price%>">
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="start">Start Time</label>
+          <input id='start' class='form-control input-sm' type="time" name="event[start]" value="<%= @event.start%>">
+        </div>
+        <div class="col-xs-6">
+          <label for="end">End Start Time</label>
+          <input id='end' class='form-control input-sm' type="time" name="event[end]" value="<%= @event.end%>">
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-xs-6">
+          <label for="capacity">Capacity</label>
+          <input id='capacity' class='form-control input-sm' type="number" name="event[capacity]" value="<%= @event.capacity%>">
+        </div>
+        <div class="col-xs-6">
+          <label for="category">Category</label>
+          <select id='category' class='form-control input-sm' name="event[category]">
+            <% @categories.each do |category| %>
+            <% if(category == @event.category) %>
+            <option selected="select"><%=category%></option>
+            <% else %>
+            <option ><%= category %></option>
+            <%end %>
+            <<%end%>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" name="event[state]" value="CA">
+      <label for="description">Event Description</label>
+      <textarea  id='description' class='form-control input-sm' type="text" name="event[description]"><%= @event.description%></textarea>
+
+      <div class='row'>
+        <div class="col-xs-5">
+          <label for="county"> Event County </label>
+          <select class="form-control input-sm pull-right" id='county' name="event[county]">
+            <% @counties.each do |county| %>
+            <% if(county == @event.county) %>
+            <option selected="select"><%=county%></option>
+            <% else %>
+            <option ><%= county %></option>
+            <%end %>
+            <<%end%>
+          </select>
+      </div>
+      <div class="col-xs-5">
+        <label for='image'>Image</label>
+        <input class='form-control input-sm' style="color: white;" id='image' type="file" name="event[image]">
+      </div><br><br>
+      <div class="col-xs-2">
+        <button type="submit" class='animated shake btn-info glyphicon glyphicon-ok-circle'>Update Event</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
