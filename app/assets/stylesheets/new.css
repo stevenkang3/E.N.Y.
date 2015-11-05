@@ -1,0 +1,75 @@
+#events {
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background:url(http://static1.squarespace.com/static/53f381b3e4b0554a7ae9cdae/t/5431cf21e4b01abda557590e/1412550433631/bigstock-events-7444309.jpg?format=1500w)no-repeat center center;
+  background-size:100% auto;
+  max-height: 350px;
+  min-height: 125px;
+  text-align: center;
+}
+#nearYou {
+  animation-delay: .5s;
+  text-align: center;
+  font-family: channel;
+  font-size: 30px;
+  margin-top: -50px;
+  color:lightblue;
+}
+
+h2#title {
+  font-family: Ariel black;
+  color: lightblue;
+}
+
+/*=======Events New ========*/
+
+#countymap {
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background:url(http://www.los-angeles-paving.com/wp-content/uploads/2011/02/los-angeles-county.jpg)no-repeat center center;
+  background-size:100% auto;
+  min-height: 380px;
+  max-height: 750px;
+  overflow-y: scroll;
+  border: 1px solid white;
+  padding-left: 35px;
+  padding-top: 15px;
+}
+h3#event_title{
+  text-align: center;
+  color: #993333;
+  font-family: Ariel Black;
+  font-weight: bold;
+}
+#createEvent {
+  margin-right: 20px;
+}
+a#createBack {
+  padding: 10px;
+}
+.button {
+  margin-left: 20px;
+  position: relative;
+  top: 10px;
+}
+/*====Admin ====*/
+#adminTitle
+{
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background:url(http://static1.squarespace.com/static/542f86bce4b02266747d8055/t/55ca2efce4b0d948d2bf1d83/1439313661370/)no-repeat center center;
+  background-size:100% auto;
+  max-height: 350px;
+  min-height: 125px;
+  text-align: center;
+}
+#wrench {
+  animation-delay: .5s;
+  text-align: center;
+  font-family: channel;
+  font-size: 30px;
+  margin-top: -50px;
+}

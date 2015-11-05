@@ -1,11 +1,15 @@
 <style media="screen">
+body{
+  margin-left: 20px;
+}
 #edits {
   -webkit-background-size: 100% auto;
   -moz-background-size: 100% auto;
   -o-background-size: 100% auto;
   background:url(http://logos.textgiraffe.com/logos/logo-name/Edit-designstyle-candy-m.png)no-repeat center center;
   background-size:100% auto;
-  height: 300px;
+  height: 120px;
+  max-width: 250px;
 }
 #form {
   height: 100%;
@@ -13,14 +17,14 @@
 .imagePic{
   width:100px;
   height:100px;
+  padding-left:5px;
   /*margin-left: 20px;*/
 }
 </style>
-<h2> EDIT PAGE</h2><br>
-<a class='animated shake' href="/users">Back</a>
-<hr>
+<a class='animated shake' href="/user/<%=@user.id%>">Back</a>
 <div class="row">
-<div class="animated bounceInDown col-md-3 col-offset-1" id='form'>
+<div class="animated bounceInDown col-xs-10 col-sm-4 col-md-4 col-lg-4" id='form'>
+  <div class="animated flip col-md-12 col-xs-12" id='edits'></div>
 <div ><img class="imagePic"src="<%=@user.image.url%>"></div><br>
 <form  action="/users/<%= @user.id %>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -52,8 +56,7 @@
 <input type="submit" class='btn-primary' value="Update">
 </form>
 </div>
-<div class="col-md-8">
-  <div class="animated flip col-md-12 col-xs-12" id='edits'>
-  </div>
+<div class="col-xs-2 col-sm-7 col-md-7 col-lg-7">
+
 </div>
 </div><br>

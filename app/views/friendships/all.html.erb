@@ -1,0 +1,99 @@
+<style media="screen">
+
+
+.connectionPic {
+  max-width: 100px;
+  min-height: 100px;
+  border-radius: 100px;
+  text-align: center;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid lightgray;
+
+}
+.nearEvent {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  background-image: url(http://i39.tinypic.com/5juvsl.jpg);
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid gray;
+  height:auto;
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
+}
+.nearTitle{
+  text-shadow: 1px solid black;
+  font-family: Cambria;
+  font-weight: bold;
+  font-size: 10px;
+  text-align: center;
+}
+#back {
+  margin-left: 15px;
+}
+#acceptButton {
+  color: white;
+}
+</style>
+<div class='row'>
+  <a id='back'href="/users">Back</a>
+  <div class='row' id='current'>
+    <ul class="nav nav-tabs pull-right">
+      <li role="presentation" class="active"><a href="#">Invitations</a></li>
+      <li role="presentation"><a href="#connected">Connections</a></li>
+      <li role="presentation"><a href="/friendships">Pending</a></li>
+    </ul>
+  </div>
+<h3 id='invitations'>Invitations to Connect</h3>
+<% @connections.each do |user| %>
+<% if user != current_user %>
+<% user.friendships.each do |u| %>
+<% if u.friend_id == current_user.id && u.status == "false" %>
+  <div class='col-xs-4 col-sm-3 col-md-3 col-lg-3'>
+    <div class='nearEvent' id='connect'>
+    <h5 class="nearTitle"><%= user.first_name %> <%= user.last_name %></h5>
+    <div style="background-image:url(<%=user.image.url%>);" class='connectionPic'></div>
+    <p class="nearTitle">Organized: <%= user.events.count %> Events</p>
+    <button class='btn-info btn-xs'><span class='glyphicon glyphicon-ok'></span><a id='acceptButton' href="/connect/<%= user.id %>"> Accept Invitation</a></button><br><br>
+    <button class='btn-warning btn-xs'><span class='glyphicon glyphicon-remove'></span> <a href="/disconnect/<%= user.id %>">Ignore</a></button>
+  </div>
+</div>
+<%end%>
+<%end%>
+<%end%>
+<%end%>
+</div>
+
+<div class='row'>
+  <div class='row' id='current'>
+    <ul class="nav nav-tabs pull-right">
+      <li role="presentation"><a href="#invitations">Invitations</a></li>
+      <li role="presentation" class='active'><a href="#">Connections</a></li>
+    </ul>
+  </div>
+
+  <h3 id='connections'>Connections:</h3>
+  <div class="network">
+    <% @connections.each do |user| %>
+    <% if user != current_user %>
+    <% user.friendships.each do |u| %>
+    <% if u.friend_id == current_user.id && u.status == "true" %>
+      <div class='col-xs-4 col-sm-3 col-md-3 col-lg-3'>
+            <div class='nearEvent' id='connect'>
+        <h5 class="nearTitle"><%= user.first_name %> <%= user.last_name %></h5>
+        <div style="background-image:url(<%=user.image.url%>);" class='connectionPic'></div>
+        <p class="nearTitle">Organized: <%= user.events.count %> Events</p>
+        <button class="btn btn-default btn-xs"><span class='glyphicon glyphicon-list-alt'></span><a id='connectButton' href="/user/<%=user.id%>"> Profile</a></button>
+      </div>
+    </div>
+    <%end%>
+    <%end%>
+    <%end%>
+    <%end%>
+  </div>

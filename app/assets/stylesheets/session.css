@@ -1,0 +1,30 @@
+/*// ============== LOGIN ===============*/
+#login {
+  padding: 50px;
+  width: 275px;
+  height: 350px;
+  border-radius: 20px;
+  background-color: lightgray;
+  border: 1px solid white;
+  opacity: 0.88;
+}
+.login_background {
+  border-radius: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-top:5px;
+  margin: 0 auto;
+  min-width: 300px;
+  min-height: 100px;
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background-image: url(http://summitmedia.us/internoise/wp-content/uploads/2014/06/test-events.jpg);
+  background-size: 100% auto;
+}
+h3#eny {
+  font-family: Ariel Black;
+  font-weight: bold;
+  font-size: 30px;
+}

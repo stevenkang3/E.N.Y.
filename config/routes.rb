@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root 'users#new'
   get '/users/new' => 'users#new'
-  get '/users/animate' => 'users#animate'
   get '/user/:id' => 'users#show'
   get '/users/:id' => 'users#edit'
   get '/users' => 'users#index'
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
 
   # ============= EVENTS ==================
   post '/events' => 'events#create'
+  get '/events/near' => 'events#near'
   get '/events/state' => 'events#state'
   get '/maps/back/:id' => 'events#back'
   get '/maps/:id' => 'events#map'
@@ -41,6 +41,24 @@ Rails.application.routes.draw do
   get '/sessions/new' => 'sessions#index'
   post '/sessions' => 'sessions#create'
   delete '/sessions' => 'sessions#destroy'
+
+  # ============ Admin ========
+  get '/admin' => 'admins#index'
+  get '/admin/login' => 'admins#login'
+  get '/admin/new' => 'admins#new'
+  post '/admin/main' => 'admins#main'
+  get '/admin/:id' => 'admins#events'
+  post '/admin' => 'admins#create'
+
+
+
+  # ============== CONNECTIONS =============
+  get '/friendships' => 'friendships#index'
+  get '/friendships/all' => 'friendships#all'
+  get '/friendships/:id' => 'friendships#create'
+  get '/connect/:id' => 'friendships#update'
+  get '/disconnect/:id' => 'friendships#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

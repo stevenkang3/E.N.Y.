@@ -35,7 +35,20 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @joins = @event.joins
     @user = @event.user
-    @comments = Comment.all
+    comments = [];
+    comment = Comment.all
+    comment.each do |c|
+    if c.event_id == @event.id
+      comments.push(c)
+      end
+    end
+    @comments = comments
+    # respond_to do |format|
+    #   format.html {redirect_to @comments }
+    #   format.js
+    # end
+  # @json_message = {:status => 'success', :message => comments}
+  # render json: json_message
   end
 
   def state
@@ -83,6 +96,11 @@ class EventsController < ApplicationController
     @users = User.all
     @pasts = Event.where('date < ?', Date.today).order(:date)
     @events = Event.where('date >= ?', Date.today).order(:date)
+  end
+
+  def near
+    @pasts = Event.all.where('date < ?', Date.today).where(state:current_user.state ).order(:date)
+    @events = Event.all.where('date >= ?', Date.today).where(state:current_user.state ).order(:date)
   end
 
   private

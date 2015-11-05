@@ -1,0 +1,29 @@
+<style media="screen">
+body{
+  margin: 0 auto;
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background:url(http://www.honestlyb.com/s/dots_desktop.jpg)no-repeat center center;
+  background-size: 100% auto;
+  max-height:700px;
+  padding:20px;
+}
+</style>
+<link rel="stylesheet/session.css" href="/stylesheets/session.css" media="screen">
+
+<div class="animated rotateIn admin_background">
+  <h3 id='eny'>E. N. Y. <a href="/admin/new">Admin</a></h3>
+<div class="animated flip login">
+<br>
+<form  id='login' action="/admin/main" method="post">
+  <a href="/users">Back to Main Page</a><br><br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="email">Email</label>
+  <input id='email' class='form-control input-sm' class='form-control input-sm' type="text" name="email" placeholder="bobby@gmail.com"><br>
+  <label for="password">Password</label>
+  <input id='password' type="password" name="password" value=""><br><br>
+  <input class="btn-primary" type="submit" value="Admin LogIn">
+</form>
+</div>
+</div>

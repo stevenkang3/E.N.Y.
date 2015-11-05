@@ -26,5 +26,12 @@
 <div class='container'>
 <%= yield %>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+    });
+});
+</script>
 </body>
 </html>

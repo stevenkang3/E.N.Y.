@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
-    @states = ["CA", "AL", "AK", "AZ", "AR"]
+    @counties = ["Los Angeles", "SF Valley", "South LA", "West LA", "East LA", "South Bay", "San Gabriel Valley", "Orange County"]
   end
   def animate
   end
@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @users = User.all
     @allevents = Event.order('date ASC')
     @events = Event.where('date >= ?', Date.today).order(:date)
-    @states = ["CA", "AL", "AK", "AZ", "AR"]
-    @county = ["Los Angeles", "SF Valley", "South LA", "West LA", "East LA", "South Bay", "San Gabriel Valley"]
+    # @states = ["CA", "AL", "AK", "AZ", "AR"]
+    @county = ["Los Angeles", "SF Valley", "South LA", "West LA", "East LA", "South Bay", "San Gabriel Valley", "Orange County"]
   end
 
   def create

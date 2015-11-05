@@ -1,0 +1,40 @@
+<style media="screen">
+  .dashboard{
+    background-image: url(http://41.media.tumblr.com/0d19209c90992d7a79a7ac10340ad829/tumblr_n8pzxuF5XJ1s5qng0o2_1280.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    min-height: 100px;
+  }
+  h3 {
+    font-weight: bold;
+    font-family: fantasy;
+    color: #3399CC;
+    text-align: center;
+  }
+</style>
+<h3>Admin Dashboard</h3>
+<div class='col-md-12'>
+<div class='dashboard'>
+</div>
+</div>
+<div class='col-md-12'>
+<table class='animated slideInDown table table-bordered'>
+  <thead>
+    <tr class="success">
+      <th>Name</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+    <td><%= user.first_name %> <%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><a href="/admin/<%=user.id%>">Events</a></td>
+    <tr>
+      <% end %>
+    </tbody>
+    </table>
+    </div>

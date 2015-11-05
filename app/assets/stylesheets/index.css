@@ -1,0 +1,103 @@
+body {
+  background-image: url(http://ahuhah.com/i/elegant-white-wallpaper-images-90aw4.jpg);
+}
+.header {
+  height: 190px;
+  background-image: url(http://www.cartersvilleelks.org/events.jpg);
+  background-repeat: no-repeat;
+  background-color: lightgray;
+  opacity: 0.85;
+  margin-top: -10px;
+}
+#navbar {
+  margin-top: 5px;
+  background-image: url(http://www.welcomia.com/uploads/preview/elegant_gray_4039.jpg);
+}
+
+h3 {
+  /*padding: 10px;*/
+  color:lightblue;
+}
+h4 {
+  font-family: fantasy;
+  color: navy;
+  text-align: center;
+}
+.event {
+  padding: 50px;
+  width: 275px;
+  height: 390px;
+  border-radius: 20px;
+  background-color: lightgray;
+  border: 1px solid white;
+  opacity: 0.85;
+  margin-left: 650px;
+}
+.footer {
+  height: 300px;
+  width: 545px;
+  background-image: url(http://www.attendly.com/wp-content/uploads/2012/09/event-planning-infographic.jpg);
+}
+.comic {
+  display: inline-block;
+}
+
+.circle {
+   width: 50px;
+   border-radius: 25px;
+   text-align: center;
+   font-size: 20px;
+   padding: 25px 0;
+   line-height: 0;
+   position: relative;
+   background: lightblue;
+   color: white;
+   font-family: Helvetica, Arial Black, sans;
+ }
+
+ .allevents{
+   min-height: 100px;
+   max-height: 250px;
+   opacity: 0.87;
+   /*background-image: url(http://1920x1080hdwallpapers.com/image/201505/computers/1428/scheme-circle-light-digital-300x169.jpg);*/
+ }
+ #eventbox {
+   padding: 3px;
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ }
+
+ .eventinfo {
+   color: lightgray;
+   font-size: 10px;
+   font-family: Arial Black;
+   font-weight: bold;
+   line-height: 1.2;
+   letter-spacing: -.25px;
+   margin-left: 5px;
+ }
+ .event_pic {
+   width: 250px;
+   height: 150px;
+   border-radius: 75px;
+   overflow: auto;
+ }
+ #profile {
+   width: 50px;
+   height: 50px;
+   border-radius: 25px;
+   text-align: center;
+   background-size: cover;
+   padding:5px;
+   /*overflow: auto;*/
+ }
+ #profileline {
+   width: 150px;
+   text-align: center;
+   padding: 15px;
+ }
+ li {
+   font-family: Arial Black;
+ }
+ #eventname {
+   font-size: 18px;
+ }

@@ -40,7 +40,6 @@ body {
   text-align: center;
   border: 1px dotted gray;
   background-image: url(http://i1080.photobucket.com/albums/j322/richgalaz/walls/wallpaper-845084.jpg);
-  /*background-color: #003399;*/
   background-attachment: fixed;
   color: lightgray;
   height: 163px;
@@ -64,16 +63,21 @@ body {
   padding:9px;
 }
 #event_image {
-  width:140px;
-  height: 140px;
-  background-size: cover;
-  background-repeat: no-repeat;
+      max-width: 100%;
+     min-height: 100px;
+     margin: 0 auto;
+     background-repeat: no-repeat;
+     background-position: center;;
+     background-size: 100%;
 }
 #user_image {
-  width:140px;
-  height: 140px;
-  background-repeat: no-repeat;
-  background-size: cover;
+  max-width: 140px;
+ min-height: 100px;
+ margin: 0 auto;
+ background-repeat: no-repeat;
+ background-position: center;;
+ background-size: 100%;
+
 }
 
 /*=======joiners====*/
@@ -116,24 +120,39 @@ body {
 #event_time {
   text-align: center;
 }
+#dashboard {
+  margin-left: 175px;
+}
+#eventComments{
+  /*height: 100px;*/
+}
 </style>
-
+<script>
+  $(document).ready(function(){
+        // $('#eventComments').html(@json_message.message);
+    $('#comment_form').submit(function(){
+      $.post(
+        $(this).attr('action'),
+        $(this).serialize(),
+        function(data){
+          console.log('Data Received from the Ajax call', data);
+          //put additional codes here to update html, etc.
+          //for example things like
+          $('#eventComments').html(data.message);
+        },
+        "json"
+      );
+      return false;
+    });
+  });
+</script>
 
 <br><br>
 <!-- =========== Top NavBar ============== -->
 <nav class='navbar navbar-default'>
   <div class='container fluid'>
-    <div class='navbar-header'>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> E.N.Y.</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav pull-right">
+      <ul class="nav navbar-nav">
         <% if current_user == @event.user %>
         <li class="active"><a href="/events/<%=@event.id%>"><span class="glyphicon glyphicon-edit"></span> Edit Event<span class="sr-only">(current)</span></a></li>
         <li><a href="/users/<%=@user.id%>"><span class="glyphicon glyphicon-trash"></span> Delete Event</a></li>
@@ -141,7 +160,6 @@ body {
         <%end%>
         <li class="active"><a  href="/users">Main Page</a></li>
       </ul>
-    </div>
   </div>
 </nav>
 
@@ -153,22 +171,13 @@ body {
 
   <nav class='navbar navbar-default'>
     <div class='container fluid'>
-      <div class='navbar-header'>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+
         <a class="navbar-brand" href="#"></span>Home</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav pull-right">
           <li class="active"><a href="/events/new">Photos<span class="sr-only">(current)</span></a></li>
-          <li><a href="/users/<%=@user.id%>">Discussions</a></li>
+          <li><a href="#comments">Discussions</a></li>
           <li><a href="/users/<%=@user.id%>"></a></li>
         </ul>
-      </div>
     </div>
   </nav>
 </div>
@@ -177,7 +186,7 @@ body {
 <div class='container'>
   <div class='row'>
     <!-- ====== Host ======== -->
-    <div class='col-sm-2' id='leftPanel'>
+    <div class='col-xs-4 col-sm-2' id='leftPanel'>
       <div style="background-image:url(<%=@event.image.url%>);" id='event_image'></div>
       <h3><%=@event.county%></h3>
       <h4>California</h4>
@@ -195,15 +204,37 @@ body {
 
 
     <!-- ======= Joiners ======== -->
-    <div class='col-sm-6' id='attendees'>
+    <div class='col-xs-8 col-sm-6' id='attendees'>
       <div class='row'>
         <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Upcoming Events</a></li>
-        <li role="presentation"><a  href="#">Past Events</a></li>
+        <li role="presentation" class="active"><a href="#">Upcoming</a></li>
+        <!-- <li role="presentation"><a  href="#">Past Events</a></li> -->
         <li role="presentation"><a href="#">Reviews</a></li>
         </ul>
       </div>
       <p>
+        <% if @event.joins.count == 1 %>
+          <h5><%=@event.joins.count%> Person has joined this Event:</h5>
+          <% @joins.each do |j| %>
+          <div class="joiners"><img class='joinerimg' src="<%=j.user.image.url%>" alt="" /></div>
+          <%end%>
+          <% if @event.users_joined.include? current_user %>
+          <form class="joiners" action="/joins" method="post">
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+            <input type='hidden' name='_method' value='delete'>
+            <input type='hidden' name='event_id' value='<%= @event.id %>'>
+            <input type='hidden' name='user_id' value='<%= current_user.id%>'>
+            <input class="btn btn-info" type='submit' value="Cancel">
+          </form>
+          <% else %>
+          <form class="joiners" action='/joins' method='post'>
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+            <input type='hidden' name='event_id' value='<%= @event.id %>'>
+            <input type='hidden' name='user_id' value='<%= current_user.id %>'>
+            <input class="btn btn-primary" type='submit' value='Join'>
+          </form>
+          <%end%>
+        <%else%>
         <h5><%=@event.joins.count%> People have joined this Event:</h5>
         <% if @event.joins.count == 0 %>
         <div><h3 style="text-align:center; color:#993366">Be the first to Join this Event<h3>
@@ -223,7 +254,7 @@ body {
             <input type='hidden' name='_method' value='delete'>
             <input type='hidden' name='event_id' value='<%= @event.id %>'>
             <input type='hidden' name='user_id' value='<%= current_user.id%>'>
-            <input class="btn btn-info" type='submit' value="Can't Make It">
+            <input class="btn btn-info" type='submit' value="Cancel">
           </form>
           <% else %>
           <form class="joiners" action='/joins' method='post'>
@@ -232,6 +263,7 @@ body {
             <input type='hidden' name='user_id' value='<%= current_user.id %>'>
             <input class="btn btn-primary" type='submit' value='Join'>
           </form>
+          <%end%>
           <%end%>
           <%end%>
         </p>
@@ -293,17 +325,18 @@ body {
   </div>
 
 <!-- ============ Right Panel ========== -->
-      <div class='col-sm-4' id='rightPanel'>
+      <div class='col-xs-12 col-sm-4' id='rightPanel'>
 
-          <div class="box" data-spy="scroll" data-target=".navbar" data-offset="50">
+          <div id='eventComments' class="box" data-spy="scroll" data-target=".navbar" data-offset="50">
             <p id='comments' > Event Discussion  <p>
-              <% @comments.each do |c| %>
-              <% if c.event_id == @event.id %>
-              <h6><div><img id='chatImage' src="<%= c.user.image.url%>" alt="" /> <%= c.user.first_name %>: <%= c.content %></h6>
-              <%end%>
-              <%end%>
+                <% @comments.each do |c| %>
+              <p>
+<img id='chatImage' src="<%=c.user.image.url%>" alt="" /><%= c.user.first_name %>: <%= c.content %><br>
+</p>
+              <% end %>
+
             </div>
-            <form class="animated slideInRight" action="/comments" method="post">
+            <form data-remote="true" id='comment_form' class="animated slideInRight" action="/comments" method="post">
               <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
               <input type='hidden' name='event_id' value='<%= @event.id%>'>
               <input type='hidden' name='user_id' value='<%= current_user.id%>'>
@@ -319,7 +352,7 @@ body {
 <% if @event.users_joined.include? current_user %>
 <br>
 <div class='board'>
-  <button id='dashboard' type="button" class='btn-lg btn-info'><a href="/users">Back</a></button><br><br>
+  <button id='dashboard' type="button" class='btn-lg btn-info'><a href="#event_title">Top</a></button><br><br>
   <div class="row">
     <div class="col-sm-3">
     </div>

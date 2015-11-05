@@ -21,69 +21,73 @@
  @import "animate.css";
  @import "animate";
 
-
-
-
  body {
    margin: 0 auto;
-   margin-left: 25px;
-   padding: 50px;
-
- }
+  //  margin-left: 25px;
+  //  padding: 200px;
+  }
 
  #error {
    color:red;
  }
 
+ #event {
+   width: 100%%;
+  //  max-height: 600px;
+  padding-bottom: 10px;
+   border-radius: 20px;
+   background-color: lightgray;
+   border: 1px solid white;
+   opacity: 0.95;
+   margin-top: 24px;
+ }
+ a#createBack {
+   position:relative;
+   top:10px
+ }
+ .admin_background {
+   border-radius: 20px;
+   padding-left: 30px;
+   padding-right: 30px;
+   padding-bottom: 50px;
+   padding-top:5px;
+   margin: 0 auto;
+   min-width: 300px;
+   min-height: 100px;
+   -webkit-background-size: 100% auto;
+   -moz-background-size: 100% auto;
+   -o-background-size: 100% auto;
+   background-image: url(http://www.essetinoconnexions.com/wp-content/uploads/2015/08/how-to-change-or-add-admin-to-facebook-page-2015.jpg);
+   background-size: 100% auto;
+ }
 // =======MAIN PAGE ===========
-#events {
-  -webkit-background-size: 100% auto;
-  -moz-background-size: 100% auto;
-  -o-background-size: 100% auto;
-  background:url(http://static1.squarespace.com/static/53f381b3e4b0554a7ae9cdae/t/5431cf21e4b01abda557590e/1412550433631/bigstock-events-7444309.jpg?format=1500w)no-repeat center center;
-  background-size:100% auto;
-  height: 350px;
-  text-align: center;
-}
-#nearYou {
-  animation-delay: .5s;
-  text-align: center;
-  font-family: channel;
-  font-size: 50px;
-  margin-top: -50px;
-  color:lightblue;
-}
-#title {
-  font-family: fantasy;
-  color: lightblue;
-}
+// #events {
+//   -webkit-background-size: 100% auto;
+//   -moz-background-size: 100% auto;
+//   -o-background-size: 100% auto;
+//   background:url(http://static1.squarespace.com/static/53f381b3e4b0554a7ae9cdae/t/5431cf21e4b01abda557590e/1412550433631/bigstock-events-7444309.jpg?format=1500w)no-repeat center center;
+//   background-size:100% auto;
+//   height: 350px;
+//   text-align: center;
+// }
+// #nearYou {
+//   animation-delay: .5s;
+//   text-align: center;
+//   font-family: channel;
+//   font-size: 50px;
+//   margin-top: -50px;
+//   color:lightblue;
+// }
 
-// ============== LOGIN ===============
-#login {
-padding: 50px;
-width: 275px;
-height: 350px;
-border-radius: 20px;
-background-color: lightgray;
-border: 1px solid white;
-opacity: 0.85;
-}
-.login_background {
-  border-radius: 20px;
-  padding:20px;
-  margin: 0 auto;
-  min-width: 300px;
-  min-height: 100px;
-  height: 593px;
-  width: 810px;
 
-  background-image: url(http://summitmedia.us/internoise/wp-content/uploads/2014/06/test-events.jpg);
-}
+
 
 // ========== SHOW ============
 .box {
 
-  height: 553px;
+  // min-height: 5px;
+  max-width: 100%;
+
   overflow-y: scroll;
   border: 1px solid black;
   border-top: 20px solid #3399FF;
@@ -121,28 +125,6 @@ opacity: 0.85;
 }
 
 // ======= NEW EVENT =======
-#event {
-  padding: 40px;
-  width: 50%%;
-  height: 700px;
-  border-radius: 20px;
-  background-color: lightgray;
-  border: 1px solid white;
-  opacity: 0.85;
-}
-#countymap {
-  -webkit-background-size: 100% auto;
-  -moz-background-size: 100% auto;
-  -o-background-size: 100% auto;
-  background:url(http://www.los-angeles-paving.com/wp-content/uploads/2011/02/los-angeles-county.jpg)no-repeat center center;
-  background-size:100% auto;
-  min-height: 380px;
-  max-height: 750px;
-  overflow-y: scroll;
-  border: 1px solid black;
-  padding-left: 35px;
-  padding-top: 15px;
-}
 
 // ===== MAP=====
 

@@ -26,8 +26,13 @@ html, body, #map, #map-canvas{
 <div id="floating-panel">
 <input type='text' class='hidden' id="start" placeholder="Starting Location - then push Enter">
 </div><br>
-<div id="right-panel"></div>
-<div id="map"></div>
+<div class='container'>
+  <div class='row'>
+<div class='col-xs-12 col-sm-6' id="map"></div>
+<div class='col-xs-6 col-sm-6' id="right-panel"></div>
+
+</div>
+</div>
 </div>
 <input type='hidden' id="end" value='<%= @event.address %>'>
 </div><!-- /page -->

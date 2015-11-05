@@ -1,0 +1,67 @@
+<style media="screen">
+
+
+.connectionPic {
+  max-width: 100px;
+  min-height: 100px;
+  border-radius: 100px;
+  text-align: center;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid lightgray;
+
+}
+.nearEvent {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  background-image: url(http://i39.tinypic.com/5juvsl.jpg);
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid gray;
+  height:auto;
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
+}
+.nearTitle{
+  text-shadow: 1px solid black;
+  font-family: Cambria;
+  font-weight: bold;
+  font-size: 10px;
+  text-align: center;
+}
+#back {
+  margin-left: 15px;
+}
+#connectButton {
+  color: white;
+
+}
+</style>
+
+<div class='row'>
+    <a id='back'href="/users">Back</a>
+    <h4 id='eventsJoined_title'>Events in <%=current_user.state%></h4>
+    <div class='row' id='current'>
+      <ul class="nav nav-tabs pull-right">
+      <li role="presentation" class="active"><a href="#">Connect</a></li>
+      <li role="presentation"><a href="#past">Pending</a></li>
+      <li role="presentation"><a href="/friendships/all">Connected</a></li>
+      </ul>
+    </div>
+    <% @users.each do |user| %>
+
+      <div class='col-xs-4 col-sm-3 col-md-3 col-lg-3'>
+      <div class='nearEvent'>
+      <h5 class="nearTitle"><%= user.first_name %> <%= user.last_name %></h5>
+      <div style="background-image:url(<%=user.image.url%>);" class='connectionPic'></div>
+      <p class="nearTitle">Organized: <%= user.events.count %> Events</p>
+      <button  class="btn btn-info btn-xs"><span class='glyphicon glyphicon-send'></span><a id='connectButton' href="/friendships/<%= user.id %>"> Connect</a></button>
+      </div>
+      </div>
+    <%end%>
+  </div>

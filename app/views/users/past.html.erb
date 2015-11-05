@@ -14,27 +14,45 @@
   text-shadow: 1px 1px black;
 }
 #userProfile_image {
-  width: 225px;
-  height: 225px;
-  background-repeat: no-repeat;
-  background-size: cover;
+ max-width: 225px;
+ min-height: 150px;
+ margin: 0 auto;
+ background-repeat: no-repeat;
+ background-position: center;;
+ background-size: 100%;
 
 }
-#userEvent_image {
-  width: 300px;
-  height: 150px;
+.userEvent_image {
+  max-width: 400px;
+  min-height: 100px;
   background-repeat: no-repeat;
+  background-position: center;;
   background-size: cover;
-  padding: 5px;
-  color:black;
-  text-shadow: 1px solid white;
-  font-family: fantasy;
-  font-size: 20px;
+  border: 1px solid lightgray;
 }
 .joinedEvents {
-  width: 200px;
-  height: 150px;
-  padding: 10px;
+  max-width: 200px;
+  min-height: 100px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid gray;
+}
+.createdEvents {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  /*background-image: url(http://i39.tinypic.com/5juvsl.jpg);*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center;*/
+  /*background-size: cover;*/
+  border: 1px solid gray;
+  height:auto;
+  text-align: center;
+
+  margin-top: 5px;
+
 }
 .joinedTitle{
   text-shadow: 1px solid black;
@@ -51,28 +69,27 @@
   border: 1px solid black;
   margin-left: 5px;
   margin-right: -5px;
+  text-align: center;
 }
 
 /*===discussion===*/
 #rightPanel {
-  padding-top: 10px;
+  padding: 10px;
   border-top: 1px solid black;
   border-bottom: 1px dotted black;
   border-right: 1px solid black;
+  /*border-left: 1px dotted black;*/
 }
 #eventsJoined_title {
-  text-align: center;
   text-decoration: underline;
   font-family: fantasy;
   font-weight: bold;
   color: #990033;
 }
+
 .profileEventTitle {
-  font-weight: bold;
-  font-family: Ariel black;
-  text-shadow: 1px 1px white;
-  text-align: center;
-  color:red;
+  font-family: fantasy;
+  font-size: 15px;
 }
 .connections {
   display:inline-block;
@@ -82,7 +99,9 @@
   height: 50px;
   border: 1px solid black;
 }
-
+.rate {
+  padding:3px;
+}
 </style>
 <!-- =========== Top NavBar ============== -->
 <nav class='navbar navbar-default'>
@@ -109,7 +128,7 @@
 <div class="page-header">
   <br>
   <h1 id='user_title' class='animated zoomIn'><%= @user.first_name %> <%= @user.last_name %></h1>
-  <!-- <h3 id='user_member' class='animated zoomIn'>Member Since: <%= @user.created_at.strftime("%b %d, %Y") %></h3> -->
+  <h3 id='user_member' class='animated zoomIn'>Member Since: <%= @user.created_at.strftime("%b %d, %Y") %></h3>
   <br>
 </div>
 
@@ -117,7 +136,7 @@
 <div class='container'>
   <div class='row'>
     <!-- ====== Host - Right Panel======== -->
-    <div class='col-sm-3' id='leftPanel'>
+    <div class='col-xs-12 col-sm-6 col-md-3 col-lg-3' id='leftPanel'>
       <div id='event_image'></div>
       <h3></h3>
       <h4> Organizer</h4>
@@ -136,46 +155,72 @@
 
 
     <!-- ======= Joiners ======== -->
-    <div class='col-sm-6' id='attendees'>
+    <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6' id='attendees'>
       <div class='row'>
         <ul class="nav nav-tabs">
-        <li role="presentation" ><a href="/user/<%=@user.id%>">Organizer Info</a></li>
-        <li role="presentation" class="active"><a href="/past/:id">Past Events</a></li>
-        <li role="presentation"><a href="#">Reviews</a></li>
+          <li role="presentation" ><a href="/user/<%=@user.id%>">Organizer Info</a></li>
+          <li role="presentation" class="active"><a href="/past/:id">Past Events</a></li>
+          <li role="presentation"><a href="#">Reviews</a></li>
         </ul>
-      </div>
-      <p>
-        </p>
-        <!-- <div class='row'>
-          <div id='event_time'>
-            <a href="" class="glyphicon glyphicon-bullhorn"> Tell_a_friend</a>  ||
-            <a href="" id="twitterShare" class="glyphicon glyphicon-share-alt"> Share</a>
-          </div>
-        </div> -->
+      </div><p></p>
 
-        <div class="row">
-          <div class='col-sm-2'>
+      <div class="row">
+        <div class='col-xs-12 col-sm-12'>
+          <div class='col-xs-3 col-sm-3'>
             <p></p>
             <button class='btn-lg btn-success glyphicon glyphicon-pencil'></button>
           </div>
-          <div class='col-sm-10'>
-            <h3 style="color:#993366" > Past Events Created by <%=@user.first_name%></h3><br>
-            <% @past.each do |e| %>
-            <a href="/event/<%=e.id%>"><div style="background-image:url(<%=e.image.url%>);" id='userEvent_image'>
-              <h2 class='profileEventTitle'><%= e.name %></h2>
-              <p class='profileEventTitle'><%= e.date.strftime("%A - %b %d, %Y") %></p>
-              <div style="color:red;" class='glyphicon glyphicon-check'></div></div></a><hr>
+          <div class='col-xs-9 col-sm-9'>
+            <h3 style="color:#993366" > Events Created by <%=@user.first_name%></h3><br>
+          </div>
+        </div>
+
+        <div class='row'>
+          <% @past.each do |e| %>
+          <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+            <div class='createdEvents'>
+              <h4 class='profileEventTitle'><span style="color:red;" class='glyphicon glyphicon-check'></span> <%= e.name %></h4>
+              <a href="/event/<%=e.id%>"><div style="background-image:url(<%=e.image.url%>);" class='userEvent_image'></div></a>
               <% if e.users_joined.include? current_user %>
-                Rate this Event:
+              <div class='rate'>
+                Rate:
                 <button type="submit" class="btn-info glyphicon glyphicon-thumbs-up"></button>
                 <button type="submit" class="btn-danger glyphicon glyphicon-thumbs-down"></button>
+              </div>
+              <%else%>
+              <br>
+              <p></p>
+              <%end%>
+            </div>
+          </div>
+          <%end%>
+        </div>
+      </div>
+      <br>
+      <hr>
+
+      <div class='row'>
+        <div class='col-xs-2 col-sm-2'>
+          <button class='btn-lg btn-info glyphicon glyphicon-thumbs-up'></button>
+        </div>
+        <div class='col-xs-10 col-sm-10'>
+          <h4>Connections:</h4>
+          <div class="network">
+            <% @users.each do |user| %>
+            <% if user != @user %>
+            <% user.friendships.each do |u| %>
+            <% if u.friend_id == @user.id && u.status == "true" %>
+            <div class="connections" ><a href="#"data-toggle="tooltip" data-original-title="<%= user.first_name%> <%= user.last_name%>" ><img class='connectionimg' src="<%=user.image.url%>" alt="" /></a></div>
+            <%end%>
+            <%end%>
             <%end%>
             <%end%>
           </div>
         </div>
-        <hr>
-
-        <div class='row'>
+      </div>
+      <br>
+    </div>
+        <!-- <div class='row'>
           <div class='col-sm-2'>
             <p></p>
             <button class='btn-lg btn-warning glyphicon glyphicon-map-marker'></button>
@@ -214,27 +259,28 @@
               <%end%>
             </div>
           </div>
-          <hr>
+          <hr> -->
 
-  </div>
+  <!-- </div> -->
+
 
 <!-- ============ Right Panel ========== -->
-      <div class='col-sm-3' id='rightPanel'>
 
-          <h4 id='eventsJoined_title'>Events <%=@user.first_name%> Joined</h4>
-          <% @join.each do |joined| %>
-          <h5 class="joinedTitle"><%= joined.event.name %>
-            <a href="/event/<%=joined.event.id%>"><div style="background-image:url(<%=joined.event.image.url%>);" class='joinedEvents'></div></a><hr>
-          <!-- <div><img class='joinedEvents' src="<%= joined.event.image.url %>" alt="" /><%=joined.event.name%></div><br> -->
-          <%end%>
-        </div>
-
-
+        <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3' id='rightPanel'>
+            <h4 id='eventsJoined_title'>Events <%=@user.first_name%> Joined</h4>
+            <% @join.each do |joined| %>
+              <div class='col-xs-6 col-sm-3 col-md-12 col-lg-12'
+            <h5 class="joinedTitle"><%= joined.event.name %></5>
+              <a href="/event/<%=joined.event.id%>"><div style="background-image:url(<%=joined.event.image.url%>);" class='joinedEvents'></div></a>
+            <!-- <div><img class='joinedEvents' src="<%= joined.event.image.url %>" alt="" /><%=joined.event.name%></div><br> -->
+              </div>
+            <%end%>
+          </div>
       </div>
     </div>
   </div>
 
-  <div class="box" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <!-- <div class="box" data-spy="scroll" data-target=".navbar" data-offset="50">
     <p id='comments' > Event Discussion  <p>
 
-    </div>
+    </div> -->
