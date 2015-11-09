@@ -8,3 +8,8 @@ E.N.Y.
 
 <p>Check out the site yourself</p>
 <a href='http://52.32.14.179'>www.eny.space<a/>
+
+<p>To experience the site please click 'Already a Memeber'</p>
+<p>You may login with:</p>
+<p>User Email: steven@gmail.com</p>
+<p>password: enyspace</p>
