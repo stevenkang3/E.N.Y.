@@ -60,39 +60,14 @@
    background-image: url(http://www.essetinoconnexions.com/wp-content/uploads/2015/08/how-to-change-or-add-admin-to-facebook-page-2015.jpg);
    background-size: 100% auto;
  }
-// =======MAIN PAGE ===========
-// #events {
-//   -webkit-background-size: 100% auto;
-//   -moz-background-size: 100% auto;
-//   -o-background-size: 100% auto;
-//   background:url(http://static1.squarespace.com/static/53f381b3e4b0554a7ae9cdae/t/5431cf21e4b01abda557590e/1412550433631/bigstock-events-7444309.jpg?format=1500w)no-repeat center center;
-//   background-size:100% auto;
-//   height: 350px;
-//   text-align: center;
-// }
-// #nearYou {
-//   animation-delay: .5s;
-//   text-align: center;
-//   font-family: channel;
-//   font-size: 50px;
-//   margin-top: -50px;
-//   color:lightblue;
-// }
 
-
-
-
-// ========== SHOW ============
+// ========== EVENTS SHOW ============
 .box {
-
-  // min-height: 5px;
   max-width: 100%;
-
   overflow-y: scroll;
   border: 1px solid black;
   border-top: 20px solid #3399FF;
   padding-left: 5px;
-  // padding-top: 15px;
 }
 .info {
   padding-left: 30px;
@@ -124,9 +99,148 @@
   text-shadow: 1px 1px white;
 }
 
-// ======= NEW EVENT =======
+// ======= USER SHOW & PAST =======
+.page-header{
+  width: 100%;
+  margin-top: -10px;
+  text-align: center;
+  border: 1px solid black;
+  background-image: url(http://cdn.lolwot.com/wp-content/uploads/2015/03/top-20-american-cities-for-singles-looking-for-love-16.jpg);
+  background-attachment: fixed;
+  color: white;
+  height: 163px;
+  border-radius: 5px;
+  text-shadow: 1px 1px black;
+}
+#userProfile_image {
+ max-width: 225px;
+ min-height: 150px;
+ margin: 0 auto;
+ background-repeat: no-repeat;
+ background-position: center;;
+ background-size: 100%;
+}
+.userEvent_image {
+  max-width: 400px;
+  min-height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid lightgray;
+}
+.joinedEvents {
+  max-width: 200px;
+  min-height: 100px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid gray;
+}
 
-// ===== MAP=====
+.joinedTitle{
+  text-shadow: 1px solid black;
+  font-family: Ariel black;
+  font-weight: bold;
+  font-size: 15px;
+}
+#leftPanel {
+  border: 1px solid black;
+  text-align: center;
+  padding:9px;
+}
+#attendees {
+  border: 1px solid black;
+  margin-left: 5px;
+  margin-right: -5px;
+  text-align: center;
+}
+
+/*===discussion===*/
+#rightPanel {
+  padding: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px dotted black;
+  border-right: 1px solid black;
+}
+#eventsJoined_title {
+  text-decoration: underline;
+  font-family: fantasy;
+  font-weight: bold;
+  color: #990033;
+}
+.connections {
+  display:inline-block;
+}
+.connectionimg {
+  width:50px;
+  height: 50px;
+  border: 1px solid black;
+}
+.rate {
+  padding:3px;
+}
+
+// ==========FRIENDSHIPS ============
+.connectionPic {
+  max-width: 100px;
+  min-height: 100px;
+  border-radius: 100px;
+  text-align: center;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid lightgray;
+
+}
+.nearEvent {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  background-image: url(http://i39.tinypic.com/5juvsl.jpg);
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: cover;
+  border: 1px solid gray;
+  height:auto;
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
+}
+.nearTitle{
+  text-shadow: 1px solid black;
+  font-family: Cambria;
+  font-weight: bold;
+  font-size: 10px;
+  text-align: center;
+}
+#back {
+  margin-left: 15px;
+}
+#acceptButton, #connectButton {
+  color: white;
+}
+
+// ========= ADMIN ==========
+.dashboard{
+  background-image: url(http://www.igorstshirts.com/blog/conceptships/2009/vectorship/vector_ship_wallin.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  min-height: 100px;
+}
+h3 {
+  font-weight: bold;
+  font-family: fantasy;
+  color: #3399CC;
+  text-align: center;
+}
+a {
+  margin-left: 20px;
+}
+
+// ===== MAP =====
 
 #directionPage, #mapPage, .ui-content {
      height: 700px;;
@@ -134,9 +248,10 @@
 
    #right-panel {
      height: 700px;;
-     float: right;
-     width: 390px;
+    //  float: right;
+     width: 350px;
      overflow: auto;
+     margin-left: -10px;
    }
 
    #map {
@@ -148,9 +263,4 @@
        height: 500px;
        margin: 0;
      }
-
-    //  #right-panel {
-    //    float: none;
-    //    width: auto;
-    //  }
    }

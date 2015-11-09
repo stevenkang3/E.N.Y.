@@ -1,69 +1,60 @@
 <link rel="stylesheet/new.css" href="/stylesheets/new.css" media="screen">
 <script type="text/javascript">
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip({
-        placement : 'top'
-    });
+  $('[data-toggle="tooltip"]').tooltip({
+    placement : 'top'
+  });
 });
 </script>
 <br>
 <br>
 <nav class='navbar navbar-default' role='navigation' id='navbar'>
-<div class='container fluid'>
-<!-- <div class='navbar-header'> -->
-  <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button> -->
-  <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> E.N.Y.</a>
-  <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-     <ul class="nav navbar-nav pull-right">
-       <li class="active"><a href="/events/new"><span class="glyphicon glyphicon-pencil"></span> Start an Event<span class="sr-only">(current)</span></a></li>
-       <li id="profileline"><span style="display:inline-block;"><a href="/users/<%=@user.id%>" style="background-image: url(<%=@user.image.url%>);" id='profile'>&nbsp; &nbsp; &nbsp;</a><a href="/users/<%=@user.id%>"> Profile <span class="glyphicon glyphicon-user"></span></a></span></li>
-     </ul>
-</div>
+  <div class='container fluid'>
+    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> E.N.Y.</a>
+
+    <ul class="nav navbar-nav pull-right">
+      <li class="active"><a href="/events/new"><span class="glyphicon glyphicon-pencil"></span> Start an Event<span class="sr-only">(current)</span></a></li>
+      <li id="profileline"><span style="display:inline-block;"><a href="/users/<%=@user.id%>" style="background-image: url(<%=@user.image.url%>);" id='profile'>&nbsp; &nbsp; &nbsp;</a><a href="/users/<%=@user.id%>"> Profile <span class="glyphicon glyphicon-user"></span></a></span></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- <a href="/users/<%=@user.id%>">Edit Profile</a><br>
-<a href="/events/new">Create an Event</a> -->
 <div class='col-md-12'>
-<div class='header'>
-  <div class='col-xs-8 col-sm-8 col-md-6 col-lg-6'>
-  <h3>Welcome <%= @user.first_name %>!</h3>
-</div>
-<div class='col-xs-4 col-sm-4 col-md-6 col-lg-6'>
-  <div class='pull-right' id='members'>
-  <h5> Total Memebers: <div class='circle'><%= @users.count %></div></h5>
-  <h5> Total Events Near You: <div class='circle'><%= @events.count %></div></h5>
-</div>
+  <div class='header'>
+    <div class='col-xs-8 col-sm-8 col-md-6 col-lg-6'>
+      <h3>Welcome <%= @user.first_name %>!</h3>
+    </div>
+    <div class='col-xs-4 col-sm-4 col-md-6 col-lg-6'>
+      <div class='pull-right' id='members'>
+        <h5> Total Memebers: <div class='circle'><%= @users.count %></div></h5>
+        <h5> Total Events Near You: <div class='circle'><%= @events.count %></div></h5>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-  <!-- <div id='profileCircle'><%= image_tag @user.image.url(:thumb) %></div> -->
+<!-- <div id='profileCircle'><%= image_tag @user.image.url(:thumb) %></div> -->
 <div class='row'>
   <ul class="nav nav-tabs pull-right">
-  <li role="presentation"><a href="/users">Current</a></li>
-  <li role="presentation"class="active"><a  href="#">Past Events</a></li>
-  <li role="presentation"><a href="/tables">Column View</a></li>
+    <li role="presentation"><a href="/users">Current</a></li>
+    <li role="presentation"class="active"><a  href="#">Past Events</a></li>
+    <li role="presentation"><a href="/tables">Column View</a></li>
   </ul>
 </div>
 
 <div class='container'>
 <% @events.each do |e| %>
 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 animated swing" id='eventbox'>
-<div style="border: 5px solid #<%=rand(0xffffff).to_s(16)%>; background-image:url(<%=e.image.url%>);" class='allevents'>
+  <div style="border: 5px solid #<%=rand(0xffffff).to_s(16)%>; background-image:url(<%=e.image.url%>);" class='allevents'>
 
-<h3 class='eventinfo'><a id='eventname' href="/event/<%=e.id%>"><%= e.name %></a><% if current_user == e.user %>
-<span class="glyphicon glyphicon-star-empty"></span>
-<%end%></h3>
-<p class='eventinfo'><%= e.date.strftime("%A - %b %d, %Y") %></p>
-<!-- <p class='eventinfo'><%= e.joins.count %> participants</p> -->
+    <h3 class='eventinfo'><a id='eventname' href="/event/<%=e.id%>"><%= e.name %></a><% if current_user == e.user %>
+      <span class="glyphicon glyphicon-star-empty"></span>
+      <%end%></h3>
+      <p class='eventinfo'><%= e.date.strftime("%A - %b %d, %Y") %></p>
+      <!-- <p class='eventinfo'><%= e.joins.count %> participants</p> -->
 
-</div>
-</div>
-<%end%>
+    </div>
+  </div>
+  <%end%>
 </div>
 
 

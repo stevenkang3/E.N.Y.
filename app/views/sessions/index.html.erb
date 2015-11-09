@@ -14,16 +14,16 @@ body{
 
 <div class="animated rotateIn login_background">
   <h3 id='eny'>E. N. Y.</h3>
-<div class="animated flip login">
-<br>
-<form  id='login' action="/sessions" method="post">
-  <a href="/users/new">Not a Member Yet?</a><br><br>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label for="email">Email</label>
-  <input id='email' class='form-control input-sm' class='form-control input-sm' type="text" name="email" placeholder="bobby@gmail.com"><br>
-  <label for="password">Password</label>
-  <input id='password' type="password" name="password" value=""><br><br>
-  <input class="btn-primary" type="submit" value="Log In">
-</form>
-</div>
+  <div class="animated flip login">
+    <br>
+    <form  id='login' action="/sessions" method="post">
+      <a href="/users/new">Not a Member Yet?</a><br><br>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label for="email">Email</label>
+      <input id='email' class='form-control input-sm' class='form-control input-sm' type="text" name="email" placeholder="bobby@gmail.com"><br>
+      <label for="password">Password</label>
+      <input id='password' type="password" name="password" value=""><br><br>
+      <input class="btn-primary" type="submit" value="Log In">
+    </form>
+  </div>
 </div>

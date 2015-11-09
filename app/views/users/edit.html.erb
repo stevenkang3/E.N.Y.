@@ -18,45 +18,44 @@ body{
   width:100px;
   height:100px;
   padding-left:5px;
-  /*margin-left: 20px;*/
 }
 </style>
 <a class='animated shake' href="/user/<%=@user.id%>">Back</a>
 <div class="row">
-<div class="animated bounceInDown col-xs-10 col-sm-4 col-md-4 col-lg-4" id='form'>
-  <div class="animated flip col-md-12 col-xs-12" id='edits'></div>
-<div ><img class="imagePic"src="<%=@user.image.url%>"></div><br>
-<form  action="/users/<%= @user.id %>" method="post" enctype="multipart/form-data">
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-<input type='hidden' name='_method' value='patch'>
-<label for="first_name">First Name</label>
-<input id='first_name' class='form-control input-sm' type="text" name="user[first_name]" value="<%= @user.first_name %>">
-<label for="last_name">Last Name</label>
-<input id='last_name' class='form-control input-sm' type="text" name="user[last_name]" value="<%= @user.last_name %>">
-<label for="email">Email</label>
-<input id='email' class='form-control input-sm' type="text" name="user[email]" value="<%= @user.email %>">
-<label for="location">Location</label>
-<input id='location' class='form-control input-sm' type="text" name="user[location]" value="<%= @user.location %>">
-<label for="state">State</label>
-<select id="state" class='form-control input-sm' name="user[state]">
-<% @states.each do |state| %>
-<% if(state == @user.state) %>
-<option selected="select"><%= state %></option>
-<% else %>
-<option><%= state %></option>
-<%end %>
-<%end %>
-</select>
-<label for='image'>Image</label>
-<input id='image' class='form-control input-sm' type="file" name="user[image]">
-<label for="password">Password</label>
-<input id='password' class='form-control input-sm' type="password" name="user[password]" placeholder="New Password">
-<label for="password_confirmation">Password Confirmation</label>
-<input id='password_confirmation' class='form-control input-sm' type="password" name="user[password_confirmation]" placeholder="Confirm Password"><br>
-<input type="submit" class='btn-primary' value="Update">
-</form>
-</div>
-<div class="col-xs-2 col-sm-7 col-md-7 col-lg-7">
+  <div class="animated bounceInDown col-xs-10 col-sm-4 col-md-4 col-lg-4" id='form'>
+    <div class="animated flip col-md-12 col-xs-12" id='edits'></div>
+    <div ><img class="imagePic"src="<%=@user.image.url%>"></div><br>
+    <form  action="/users/<%= @user.id %>" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type='hidden' name='_method' value='patch'>
+      <label for="first_name">First Name</label>
+      <input id='first_name' class='form-control input-sm' type="text" name="user[first_name]" value="<%= @user.first_name %>">
+      <label for="last_name">Last Name</label>
+      <input id='last_name' class='form-control input-sm' type="text" name="user[last_name]" value="<%= @user.last_name %>">
+      <label for="email">Email</label>
+      <input id='email' class='form-control input-sm' type="text" name="user[email]" value="<%= @user.email %>">
+      <label for="location">Location</label>
+      <input id='location' class='form-control input-sm' type="text" name="user[location]" value="<%= @user.location %>">
+      <label for="state">State</label>
+      <select id="state" class='form-control input-sm' name="user[state]">
+      <% @states.each do |state| %>
+        <% if(state == @user.state) %>
+        <option selected="select"><%= state %></option>
+        <% else %>
+        <option><%= state %></option>
+        <%end %>
+        <%end %>
+      </select>
+      <label for='image'>Image</label>
+      <input id='image' class='form-control input-sm' type="file" name="user[image]">
+      <label for="password">Password</label>
+      <input id='password' class='form-control input-sm' type="password" name="user[password]" placeholder="New Password">
+      <label for="password_confirmation">Password Confirmation</label>
+      <input id='password_confirmation' class='form-control input-sm' type="password" name="user[password_confirmation]" placeholder="Confirm Password"><br>
+      <input type="submit" class='btn-primary' value="Update">
+    </form>
+  </div>
+  <div class="col-xs-2 col-sm-7 col-md-7 col-lg-7">
 
-</div>
+  </div>
 </div><br>

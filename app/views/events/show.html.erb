@@ -1,8 +1,4 @@
 <style media="screen">
-body {
-  /*background-image: url(http://www.freecreatives.com/wp-content/uploads/2015/04/seamless-white-wall-texture.jpg);*/
-
-}
 .board {
   background-image: url(http://designurge.com/wp-content/uploads/2013/10/corkboard.jpg);
   padding:20px;
@@ -27,24 +23,14 @@ body {
   padding-top: 10px;
 }
 
- #map{
+#map{
   height: 300px;
 }
 .nav navbar-nav {
   margin: 0 auto;
 }
 /*NEW==========*/
-.page-header{
-  width: 100%;
-  margin-top: -10px;
-  text-align: center;
-  border: 1px dotted gray;
-  background-image: url(http://i1080.photobucket.com/albums/j322/richgalaz/walls/wallpaper-845084.jpg);
-  background-attachment: fixed;
-  color: lightgray;
-  height: 163px;
-  border-radius: 5px;
-}
+
 #event_title {
   font-family: Rockwell Extra Bold;
 }
@@ -57,27 +43,21 @@ body {
   border: 1px solid black;
 }
 /*=====host====*/
-#leftPanel {
-  border: 1px solid black;
-  text-align: center;
-  padding:9px;
-}
 #event_image {
-      max-width: 100%;
-     min-height: 100px;
-     margin: 0 auto;
-     background-repeat: no-repeat;
-     background-position: center;;
-     background-size: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: 100%;
 }
 #user_image {
   max-width: 140px;
- min-height: 100px;
- margin: 0 auto;
- background-repeat: no-repeat;
- background-position: center;;
- background-size: 100%;
-
+  min-height: 100px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;;
+  background-size: 100%;
 }
 
 /*=======joiners====*/
@@ -86,9 +66,6 @@ body {
   margin-left: 5px;
   margin-right: -5px;
 }
-
-
-
 
 /*===discussion===*/
 #rightPanel {
@@ -103,9 +80,8 @@ body {
   text-align: center;
   border: 1px solid lightgray;
 }
-
 .inner-addon {
-    position: relative;
+  position: relative;
 }
 .inner-addon .glyphicon {
   position: absolute;
@@ -123,43 +99,40 @@ body {
 #dashboard {
   margin-left: 175px;
 }
-#eventComments{
-  /*height: 100px;*/
-}
 </style>
 <script>
-  $(document).ready(function(){
-        // $('#eventComments').html(@json_message.message);
-    $('#comment_form').submit(function(){
-      $.post(
-        $(this).attr('action'),
-        $(this).serialize(),
-        function(data){
-          console.log('Data Received from the Ajax call', data);
-          //put additional codes here to update html, etc.
-          //for example things like
-          $('#eventComments').html(data.message);
-        },
-        "json"
-      );
-      return false;
-    });
+$(document).ready(function(){
+  // $('#eventComments').html(@json_message.message);
+  $('#comment_form').submit(function(){
+    $.post(
+      $(this).attr('action'),
+      $(this).serialize(),
+      function(data){
+        console.log('Data Received from the Ajax call', data);
+        //put additional codes here to update html, etc.
+        //for example things like
+        $('#eventComments').html(data.message);
+      },
+      "json"
+    );
+    return false;
   });
+});
 </script>
 
 <br><br>
 <!-- =========== Top NavBar ============== -->
 <nav class='navbar navbar-default'>
   <div class='container fluid'>
-      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> E.N.Y.</a>
-      <ul class="nav navbar-nav">
-        <% if current_user == @event.user %>
-        <li class="active"><a href="/events/<%=@event.id%>"><span class="glyphicon glyphicon-edit"></span> Edit Event<span class="sr-only">(current)</span></a></li>
-        <li><a href="/users/<%=@user.id%>"><span class="glyphicon glyphicon-trash"></span> Delete Event</a></li>
-        <!-- <li id='profileline' ><a href="" style="background-image: url(<%=@user.image.url%>);" id='profile'></a></li> -->
-        <%end%>
-        <li class="active"><a  href="/users">Main Page</a></li>
-      </ul>
+    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> E.N.Y.</a>
+    <ul class="nav navbar-nav">
+      <% if current_user == @event.user %>
+      <li class="active"><a href="/events/<%=@event.id%>"><span class="glyphicon glyphicon-edit"></span> Edit Event<span class="sr-only">(current)</span></a></li>
+      <li><a href="/users/<%=@user.id%>"><span class="glyphicon glyphicon-trash"></span> Delete Event</a></li>
+      <!-- <li id='profileline' ><a href="" style="background-image: url(<%=@user.image.url%>);" id='profile'></a></li> -->
+      <%end%>
+      <li class="active"><a  href="/users">Main Page</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -172,12 +145,12 @@ body {
   <nav class='navbar navbar-default'>
     <div class='container fluid'>
 
-        <a class="navbar-brand" href="#"></span>Home</a>
-        <ul class="nav navbar-nav pull-right">
-          <li class="active"><a href="/events/new">Photos<span class="sr-only">(current)</span></a></li>
-          <li><a href="#comments">Discussions</a></li>
-          <li><a href="/users/<%=@user.id%>"></a></li>
-        </ul>
+      <a class="navbar-brand" href="#"></span>Home</a>
+      <ul class="nav navbar-nav pull-right">
+        <li class="active"><a href="/events/new">Photos<span class="sr-only">(current)</span></a></li>
+        <li><a href="#comments">Discussions</a></li>
+        <li><a href="/users/<%=@user.id%>"></a></li>
+      </ul>
     </div>
   </nav>
 </div>
@@ -207,33 +180,33 @@ body {
     <div class='col-xs-8 col-sm-6' id='attendees'>
       <div class='row'>
         <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Upcoming</a></li>
-        <!-- <li role="presentation"><a  href="#">Past Events</a></li> -->
-        <li role="presentation"><a href="#">Reviews</a></li>
+          <li role="presentation" class="active"><a href="#">Upcoming</a></li>
+          <!-- <li role="presentation"><a  href="#">Past Events</a></li> -->
+          <li role="presentation"><a href="#">Reviews</a></li>
         </ul>
       </div>
       <p>
         <% if @event.joins.count == 1 %>
-          <h5><%=@event.joins.count%> Person has joined this Event:</h5>
-          <% @joins.each do |j| %>
-          <div class="joiners"><img class='joinerimg' src="<%=j.user.image.url%>" alt="" /></div>
-          <%end%>
-          <% if @event.users_joined.include? current_user %>
-          <form class="joiners" action="/joins" method="post">
-            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-            <input type='hidden' name='_method' value='delete'>
-            <input type='hidden' name='event_id' value='<%= @event.id %>'>
-            <input type='hidden' name='user_id' value='<%= current_user.id%>'>
-            <input class="btn btn-info" type='submit' value="Cancel">
-          </form>
-          <% else %>
-          <form class="joiners" action='/joins' method='post'>
-            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-            <input type='hidden' name='event_id' value='<%= @event.id %>'>
-            <input type='hidden' name='user_id' value='<%= current_user.id %>'>
-            <input class="btn btn-primary" type='submit' value='Join'>
-          </form>
-          <%end%>
+        <h5><%=@event.joins.count%> Person has joined this Event:</h5>
+        <% @joins.each do |j| %>
+        <div class="joiners"><img class='joinerimg' src="<%=j.user.image.url%>" alt="" /></div>
+        <%end%>
+        <% if @event.users_joined.include? current_user %>
+        <form class="joiners" action="/joins" method="post">
+          <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+          <input type='hidden' name='_method' value='delete'>
+          <input type='hidden' name='event_id' value='<%= @event.id %>'>
+          <input type='hidden' name='user_id' value='<%= current_user.id%>'>
+          <input class="btn btn-info" type='submit' value="Cancel">
+        </form>
+        <% else %>
+        <form class="joiners" action='/joins' method='post'>
+          <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+          <input type='hidden' name='event_id' value='<%= @event.id %>'>
+          <input type='hidden' name='user_id' value='<%= current_user.id %>'>
+          <input class="btn btn-primary" type='submit' value='Join'>
+        </form>
+        <%end%>
         <%else%>
         <h5><%=@event.joins.count%> People have joined this Event:</h5>
         <% if @event.joins.count == 0 %>
@@ -274,7 +247,7 @@ body {
             <a href="" id="twitterShare" class="glyphicon glyphicon-share-alt"> Share</a>
           </div>
         </div>
-            <hr>
+        <hr>
 
         <div class="row">
           <div class='col-sm-2'>
@@ -312,27 +285,27 @@ body {
         </div>
         <hr>
 
-          <div class='row'>
-            <div class='col-sm-2'>
-              <button class='btn-lg btn-default glyphicon glyphicon-list-alt media'></button>
-            </div>
-            <div class='col-sm-10'>
-              <h5><%=@event.description %>
+        <div class='row'>
+          <div class='col-sm-2'>
+            <button class='btn-lg btn-default glyphicon glyphicon-list-alt media'></button>
+          </div>
+          <div class='col-sm-10'>
+            <h5><%=@event.description %>
             </div>
           </div>
           <hr>
 
-  </div>
+        </div>
 
-<!-- ============ Right Panel ========== -->
-      <div class='col-xs-12 col-sm-4' id='rightPanel'>
+        <!-- ============ Right Panel ========== -->
+        <div class='col-xs-12 col-sm-4' id='rightPanel'>
 
           <div id='eventComments' class="box" data-spy="scroll" data-target=".navbar" data-offset="50">
             <p id='comments' > Event Discussion  <p>
-                <% @comments.each do |c| %>
+              <% @comments.each do |c| %>
               <p>
-<img id='chatImage' src="<%=c.user.image.url%>" alt="" /><%= c.user.first_name %>: <%= c.content %><br>
-</p>
+                <img id='chatImage' src="<%=c.user.image.url%>" alt="" /><%= c.user.first_name %>: <%= c.content %><br>
+              </p>
               <% end %>
 
             </div>
@@ -346,37 +319,37 @@ body {
                 <input type="submit" class='btn-primary pull-right' value="Add Comment">
               </div>
             </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-<% if @event.users_joined.include? current_user %>
-<br>
-<div class='board'>
-  <button id='dashboard' type="button" class='btn-lg btn-info'><a href="#event_title">Top</a></button><br><br>
-  <div class="row">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-9 ">
-      <div class='animated swing info'>
-        <img id='pin' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5UMh2EzCS91yNJiB4Vtk-prjaecmHA6lBT4V7bZnichoHhHYi" alt="" />
-        <h1><%= @event.name %></h1>
-        <label for="host">Host: </label> <%= @event.user.first_name %> <%= @event.user.last_name %><br>
-        <label for="date">Date: </label> <%= @event.date.strftime("%A - %b %d, %Y") %><br>
-        <label for="host">Time: </label> <%= @event.start.strftime(" %I:%M %p") %> to <%= @event.end.strftime(" %I:%M %p") %><br>
-        <label for="host">Location: </label> <%= @event.county %><br>
-        <label for="host">Price: </label>  <%= @event.price %><br><br>
-      </div><br>
+      <% if @event.users_joined.include? current_user %>
+      <br>
+      <div class='board'>
+        <button id='dashboard' type="button" class='btn-lg btn-info'><a href="#event_title">Top</a></button><br><br>
+        <div class="row">
+          <div class="col-sm-3">
+          </div>
+          <div class="col-sm-9 ">
+            <div class='animated swing info'>
+              <img id='pin' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5UMh2EzCS91yNJiB4Vtk-prjaecmHA6lBT4V7bZnichoHhHYi" alt="" />
+              <h1><%= @event.name %></h1>
+              <label for="host">Host: </label> <%= @event.user.first_name %> <%= @event.user.last_name %><br>
+              <label for="date">Date: </label> <%= @event.date.strftime("%A - %b %d, %Y") %><br>
+              <label for="host">Time: </label> <%= @event.start.strftime(" %I:%M %p") %> to <%= @event.end.strftime(" %I:%M %p") %><br>
+              <label for="host">Location: </label> <%= @event.county %><br>
+              <label for="host">Price: </label>  <%= @event.price %><br><br>
+            </div><br>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <%end%>
+      <%end%>
 
-<!-- ====== Map ======= -->
-<script type="text/javascript">
-$( document ).ready(function() {
-   $('#eventpad').click(function() {
-      window.location.replace("/maps/<%= @event.id %>");
-    });
-    });
-</script>
-</body>
+      <!-- ====== Map ======= -->
+      <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#eventpad').click(function() {
+          window.location.replace("/maps/<%= @event.id %>");
+        });
+      });
+      </script>
+    </body>
