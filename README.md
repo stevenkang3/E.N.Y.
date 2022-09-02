@@ -1,6 +1,7 @@
 
 E.N.Y.!
-[Screen Shot 2022-09-02 at 12 43 37 AM](https://user-images.githubusercontent.com/13388651/188086209-6b10812f-7df8-426d-8de1-f29e089da862.png)
+![](https://user-images.githubusercontent.com/13388651/188086315-9ccc0ee3-9f35-44e8-b9d7-cc1afe453510.png)
+
 
 
 <h1>Events Near You</h1>
