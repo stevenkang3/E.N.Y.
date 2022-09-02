@@ -1,8 +1,7 @@
 
 E.N.Y.!
+
 ![](https://user-images.githubusercontent.com/13388651/188086315-9ccc0ee3-9f35-44e8-b9d7-cc1afe453510.png)
-
-
 
 <h1>Events Near You</h1>
 <p>Built using the Ruby on Rails<p>
